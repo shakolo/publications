@@ -1,4 +1,4 @@
 <?php
 
-echo 2+1;
+echo "front controller";
 
