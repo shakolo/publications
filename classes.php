@@ -1,6 +1,6 @@
 <?php
 
-class Publication {
+abstract class Publication {
     public $id;
     public $title;
     public $date;
