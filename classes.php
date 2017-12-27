@@ -10,6 +10,8 @@ abstract class Publication {
     public $author_name;
     public $type;
     
+    abstract public function printItem();
+            
     function __construct($row) {
         $this->id = $row['id'];
         $this->title = $row['title'];
@@ -22,6 +24,11 @@ abstract class Publication {
     }
     
 }
+
+class AudioPublication extends Publication {
+    
+}
+
 class NewsPublication extends Publication {
     public function printItem(){
         echo 'это новость<br>';
