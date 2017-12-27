@@ -1,5 +1,9 @@
 <?php
 
+interface publicationToPrint {
+    public function printPublication();
+}
+
 abstract class Publication {
     public $id;
     public $title;
@@ -25,8 +29,9 @@ abstract class Publication {
     
 }
 
-class AudioPublication extends Publication {
-    
+class AudioPublication extends Publication implements publicationToPrint {
+    public function printItem();
+    public function printPublication();
 }
 
 class NewsPublication extends Publication {
