@@ -11,8 +11,9 @@ class NewsController {
         echo 'NewsController-index()';
         return true;
     }
-    public function actionView () {
+    public function actionView ($category, $id) {
         echo 'NewsController->view()';
+        echo  $category ." " . $id;
         return true;
     }
 }

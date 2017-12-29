@@ -32,9 +32,11 @@ class Router {
         foreach($this->routes as $uriPattern => $path) {
 //            echo "<br>$uriPattern -> $path";
             if (preg_match("~$uriPattern~", $uri)) {
+                
+                $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
 //                echo '+';
 //                echo $path;
-                $segments = explode('/', $path);
+                $segments = explode('/', $internalRoute);
 //                print_r($segments);
                 $controllerName = array_shift($segments).'Controller';
                 $controllerName = ucfirst($controllerName);
@@ -43,6 +45,9 @@ class Router {
                 $actionName = 'action'.ucfirst(array_shift($segments));
 //                echo $actionName;
                 
+                $parametrs = $segments;
+                print_r($parametrs);
+                
                 $conrollerFile = ROOT . '/controllers/' . $controllerName . '.php';
                 
                 if(file_exists($conrollerFile)){
@@ -50,7 +55,8 @@ class Router {
                 }
                 
                 $controllerObject = new $controllerName;
-                $result = $controllerObject->$actionName();
+                $result = call_user_func_array(array($controllerObject,$actionName), $parametrs);
+                
                 if($result != null) {
                     break;
                 }
