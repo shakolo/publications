@@ -13,6 +13,11 @@ class Router {
         $routesPath = ROOT . '/config/routes.php';
         $this->routes = include($routesPath);
     }
+    
+    /**
+     * Returns request string 
+     * @return string
+     */
     public function getUri(){
         if(!empty($_SERVER['REQUEST_URI'])) {
             return trim($_SERVER['REQUEST_URI'], '/');
@@ -23,6 +28,34 @@ class Router {
 //        print_r($this->routes);
 //        echo 'Class Router->run()';
         $uri = $this->getUri();
-        echo $uri;
+//        echo $uri;
+        foreach($this->routes as $uriPattern => $path) {
+//            echo "<br>$uriPattern -> $path";
+            if (preg_match("~$uriPattern~", $uri)) {
+//                echo '+';
+//                echo $path;
+                $segments = explode('/', $path);
+//                print_r($segments);
+                $controllerName = array_shift($segments).'Controller';
+                $controllerName = ucfirst($controllerName);
+//                echo $controllrName;
+                
+                $actionName = 'action'.ucfirst(array_shift($segments));
+//                echo $actionName;
+                
+                $conrollerFile = ROOT . '/controllers/' . $controllerName . '.php';
+                
+                if(file_exists($conrollerFile)){
+                    include_once($conrollerFile);
+                }
+                
+                $controllerObject = new $controllerName;
+                $result = $controllerObject->$actionName();
+                if($result != null) {
+                    break;
+                }
+            }
+        }
+
     }
 }

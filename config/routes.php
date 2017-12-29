@@ -1,7 +1,8 @@
 <?php
 return array( 
-    'news' => 'test2/index',
+    'news' => 'news/index',
     'products' => 'product/list',
+    'test2' => 'test2/index'
 );
 
 ?>
