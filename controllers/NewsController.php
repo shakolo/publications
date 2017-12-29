@@ -8,7 +8,11 @@
 
 class NewsController {
     public function actionIndex () {
-        echo 'NewsController';
+        echo 'NewsController-index()';
+        return true;
+    }
+    public function actionView () {
+        echo 'NewsController->view()';
         return true;
     }
 }
