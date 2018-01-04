@@ -6,13 +6,9 @@ class News {
         $id = intval($id);
         
         if($id) {
-            $host = 'localhost';
-            $dbname = 'phpstartdb';
-            $user = 'root';
-            $password = '';
-            $charset = 'utf8';
-            $db = new PDO("mysql:host=$host;dbname=$dbname;charset=$charset", $user, $password);
 
+            $db = Db::getConnection();
+            
             $result = $db->query('SELECT * '
                     . 'FROM publication '
                     . 'WHERE id='
@@ -26,13 +22,7 @@ class News {
     }
     
     public static function getNewsList(){
-        $host = 'localhost';
-        $dbname = 'phpstartdb';
-        $user = 'root';
-        $password = '';
-        $charset = 'utf8';
-        $db = new PDO("mysql:host=$host;dbname=$dbname;charset=$charset", $user, $password);
-        
+        $db = Db::getConnection();
         $newsList = array();
         
         $result = $db->query('SELECT id, title, date, short_content '
