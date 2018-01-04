@@ -19,9 +19,7 @@ class NewsController {
 //        echo 'NewsController->view()';
         if($id) {
             $newsItem = News::getNewsItemById($id);
-            echo '<pre>';
-            print_r($newsItem);
-            echo '</pre>';
+            require_once ROOT.'/views/news/view.php';      
         }
 //        echo  $category ." " . $id;
         return true;

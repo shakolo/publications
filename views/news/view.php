@@ -40,18 +40,18 @@ Description: A two-column fixed-width template suitable for small websites.
   <div id="page">
     <div id="page-bgtop">
       <div id="content">
-        <?php foreach ($newsList as $newsItem):?>
+
         <div class="post">
-          <h2 class="title"><a href="<?php echo 'news/'.$newsItem['id'];?>"><?php echo $newsItem['title'];?></a></h2>
+          <h2 class="title"><a href="#"><?php echo $newsItem['title'];?></a></h2>
           <p class="byline"><?php echo $newsItem['date'];?></p>
           <div class="entry">
-            <p><?php echo $newsItem['short_content'];?></p>
+            <p><?php echo $newsItem['content'];?></p>
           </div>
           <div class="meta">
-            <p class="links"><a href="<?php echo 'news/'.$newsItem['id'];?>" class="comments">Подробнее</a></p>
+            <p class="links"><a href="<?php echo '/test2/news';?>" class="comments">Назад</a></p>
           </div>
         </div>
-        <?php endforeach;?>
+
       </div>
       <!-- end div#content -->
       <div id="sidebar">
