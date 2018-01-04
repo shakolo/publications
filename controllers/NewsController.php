@@ -8,12 +8,25 @@ include_once ROOT . '/models/News.php';;
 
 class NewsController {
     public function actionIndex () {
-        echo 'NewsController-index()';
+//        echo 'NewsController->index()';
+        $newsList = array();
+        $newsList = News::getNewsList();
+//        echo 'News->actionIndex';
+        echo '<pre>';
+        print_r($newsList);
+        echo '</pre>';
+        
         return true;
     }
     public function actionView ($category, $id) {
-        echo 'NewsController->view()';
-        echo  $category ." " . $id;
+//        echo 'NewsController->view()';
+        if($id) {
+            $newsItem = News::getNewsItemById($id);
+            echo '<pre>';
+            print_r($newsItem);
+            echo '</pre>';
+        }
+//        echo  $category ." " . $id;
         return true;
     }
 }

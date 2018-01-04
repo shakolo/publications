@@ -38,15 +38,16 @@ class Router {
 //                echo $path;
                 $segments = explode('/', $internalRoute);
 //                print_r($segments);
+//                $test2 = array_shift($segments).'Test2';
                 $controllerName = array_shift($segments).'Controller';
                 $controllerName = ucfirst($controllerName);
-//                echo $controllrName;
+//                echo $controllerName;
                 
                 $actionName = 'action'.ucfirst(array_shift($segments));
 //                echo $actionName;
                 
                 $parametrs = $segments;
-                print_r($parametrs);
+//                print_r($parametrs);
                 
                 $conrollerFile = ROOT . '/controllers/' . $controllerName . '.php';
                 
