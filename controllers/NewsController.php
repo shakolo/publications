@@ -12,10 +12,7 @@ class NewsController {
         $newsList = array();
         $newsList = News::getNewsList();
 //        echo 'News->actionIndex';
-        echo '<pre>';
-        print_r($newsList);
-        echo '</pre>';
-        
+        require_once ROOT.'/views/news/index.php';
         return true;
     }
     public function actionView ($id) {
