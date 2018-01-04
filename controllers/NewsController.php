@@ -18,7 +18,7 @@ class NewsController {
         
         return true;
     }
-    public function actionView ($category, $id) {
+    public function actionView ($id) {
 //        echo 'NewsController->view()';
         if($id) {
             $newsItem = News::getNewsItemById($id);

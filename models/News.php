@@ -1,9 +1,28 @@
 <?php
 
 class News {
-    public static function getNewsItemId($id) {
+    public static function getNewsItemById($id) {
         
+        $id = intval($id);
         
+        if($id) {
+            $host = 'localhost';
+            $dbname = 'phpstartdb';
+            $user = 'root';
+            $password = '';
+            $charset = 'utf8';
+            $db = new PDO("mysql:host=$host;dbname=$dbname;charset=$charset", $user, $password);
+
+            $result = $db->query('SELECT * '
+                    . 'FROM publication '
+                    . 'WHERE id='
+                    . $id
+                    );
+//            $result->setFetchMode(PDO::FETCH_NUM);
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            $newsItem = $result->fetch();
+            return $newsItem;
+        }
     }
     
     public static function getNewsList(){
